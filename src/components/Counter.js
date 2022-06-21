@@ -1,4 +1,4 @@
-const Counter = ({title = "Sin titulo", value = 0}) => {
+const Counter = ({title = "Sin titulo", value = 0, changeValue}) => {
 
     return (
         <div>
@@ -6,9 +6,9 @@ const Counter = ({title = "Sin titulo", value = 0}) => {
                 {title}
             </div>
             <div>
-                <button>-</button>
+                <button disabled={value === 0} onClick={() => changeValue(value - 1)}>-</button>
                 {value}
-                <button>+</button>
+                <button onClick={() => changeValue(value + 1)}>+</button>
             </div>
         </div>
 

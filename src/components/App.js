@@ -1,27 +1,78 @@
-import '../styles/App.scss';
+import "../styles/App.scss";
 // import "../styles/Reset.scss";
-import Counter from './Counter';
+
+import Counter from "./Counter";
+
+import { useState } from "react";
 
 function App() {
+  const [gamesWinned, setGamesWinned] = useState(0);
+  const [gamesLost, setGamesLost] = useState(0);
+  const [list, setList] = useState([]);
+  const [newProfile, setNewProfile] = useState("");
+  const [selectedProfile, setSelectedProfile] = useState("default");
+
+  const optionsList = list.map((name) => <option value={name}>{name}</option>);
+
+  /*const changeValue = (setFuntion) => (value) => {
+    setFuntion(value)
+  }*/
+
+  const winRatio = () => {
+    return (((gamesWinned / (gamesWinned + gamesLost)) * 100) || 0).toFixed(2);
+  };
+
+  const saveListData = () => {
+    setList([...list, newProfile]);
+    setNewProfile("");
+    setSelectedProfile(newProfile);
+  };
+
   return (
     <div>
       <h1>Contador LoL</h1>
-    
-      <fieldset>
-      <label for="character"></label>
-      <input type="text" name="character" id="character" placeholder='lol' />
-    </fieldset>
-    
-    <fieldset>
-      <label for="character"></label>
-      <select name="character" id="character">
-        <option value="default">Default</option>
-      </select>
-    </fieldset>
 
-    <Counter title="Partidas ganadas 😎" value={5}></Counter>
-    <Counter title="Partidas perdidas 😓" value={2}></Counter>
-    <Counter title="Partidas en las que lo paso bien 🤩" value={10}></Counter>
+      <fieldset>
+        <label for="character"></label>
+        <input
+          type="text"
+          name="character"
+          id="character"
+          placeholder="League of Legends"
+          onChange={(e) => setNewProfile(e.target.value)}
+          value={newProfile}
+        />
+      </fieldset>
+      <button onClick={saveListData}>Guardar ficha</button>
+
+      <fieldset>
+        <label for="character"></label>
+        <select name="character" id="character" value={selectedProfile} onChange= {(e) => setSelectedProfile(e.target.value)}>
+          <option value="default">Seleccionar juego</option>
+          {optionsList}
+        </select>
+      </fieldset>
+
+      <Counter
+        title="Partidas ganadas 😎"
+        value={gamesWinned}
+        changeValue={setGamesWinned}
+      ></Counter>
+      <Counter
+        title="Partidas perdidas 😓"
+        value={gamesLost}
+        changeValue={setGamesLost}
+      ></Counter>
+      <div>
+        <div>Partidas en las que lo paso bien 🤩</div>
+        <div>{gamesWinned + gamesLost}</div>
+      </div>
+      <div>
+        <div>Win Rate:</div>
+        <div>{winRatio()}</div>
+      </div>
+
+      <button>Reset</button>
     </div>
   );
 }
