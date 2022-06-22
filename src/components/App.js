@@ -78,7 +78,7 @@ function App() {
         changeValue={setGamesLost}
       ></Counter>
       <div>
-        <div>Partidas en las que lo paso bien 🤩</div>
+        <div>Partidas en las que lo pasamos bien 🤩</div>
         <div>{gamesWinned + gamesLost}</div>
       </div>
       <div>
