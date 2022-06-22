@@ -1,0 +1,20 @@
+.header {
+    background-image: url("../images/title-img.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    &__title {
+    padding: 50px;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    
+    font-size: 20px;
+    }
+}
+

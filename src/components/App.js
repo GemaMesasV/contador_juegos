@@ -1,7 +1,9 @@
 import "../styles/App.scss";
-// import "../styles/Reset.scss";
+import "../styles/Reset.scss";
+import "../styles/Header.scss";
 
 import Counter from "./Counter";
+
 
 import { useState } from "react";
 
@@ -19,7 +21,7 @@ function App() {
   }*/
 
   const winRatio = () => {
-    return (((gamesWinned / (gamesWinned + gamesLost)) * 100) || 0).toFixed(2);
+    return ((gamesWinned / (gamesWinned + gamesLost)) * 100 || 0).toFixed(2);
   };
 
   const saveListData = () => {
@@ -30,10 +32,14 @@ function App() {
 
   return (
     <div>
-      <h1>Contador LoL</h1>
+      <header className="header">
+        <h1 className="header__title">
+          El cuentatrón 3000 <i>(nombre provisional)</i>
+        </h1>
+      </header>
 
       <fieldset>
-        <label for="character"></label>
+        <label htmlFor="character"></label>
         <input
           type="text"
           name="character"
@@ -46,8 +52,13 @@ function App() {
       <button onClick={saveListData}>Guardar ficha</button>
 
       <fieldset>
-        <label for="character"></label>
-        <select name="character" id="character" value={selectedProfile} onChange= {(e) => setSelectedProfile(e.target.value)}>
+        <label htmlFor="character"></label>
+        <select
+          name="character"
+          id="character"
+          value={selectedProfile}
+          onChange={(e) => setSelectedProfile(e.target.value)}
+        >
           <option value="default">Seleccionar juego</option>
           {optionsList}
         </select>
@@ -59,7 +70,7 @@ function App() {
         changeValue={setGamesWinned}
       ></Counter>
       <Counter
-        title="Partidas perdidas 😓"
+        title="Partidas perdidas 😭"
         value={gamesLost}
         changeValue={setGamesLost}
       ></Counter>
