@@ -1,6 +1,7 @@
 import "../styles/App.scss";
 import "../styles/Reset.scss";
 import "../styles/Header.scss";
+import "../styles/Main.scss";
 
 import Counter from "./Counter";
 
@@ -37,23 +38,25 @@ function App() {
           El cuentatrón 3000 <i>(nombre provisional)</i>
         </h1>
       </header>
-
+<main className="main">
       <fieldset>
         <label htmlFor="character"></label>
         <input
+        className="input"
           type="text"
           name="character"
           id="character"
-          placeholder="League of Legends"
+          placeholder="Ej: League of Legends..."
           onChange={(e) => setNewProfile(e.target.value)}
           value={newProfile}
         />
       </fieldset>
-      <button onClick={saveListData}>Guardar ficha</button>
+      <button className="button" onClick={saveListData}>Guardar ficha</button>
 
       <fieldset>
         <label htmlFor="character"></label>
         <select
+        className="select"
           name="character"
           id="character"
           value={selectedProfile}
@@ -80,10 +83,12 @@ function App() {
       </div>
       <div>
         <div>Win Rate:</div>
-        <div>{winRatio()}</div>
+        <div>{winRatio()} %</div>
+        
       </div>
 
-      <button>Reset</button>
+      <button className="button">Reset</button>
+      </main>
     </div>
   );
 }

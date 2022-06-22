@@ -1,0 +1,36 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100vw;
+    padding: 30px 40px;
+    font-size: 15px;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    background-image: linear-gradient(rgb(57, 6, 57), #1a0429);
+
+    button {
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    .button {
+        padding: 5px;
+    }
+
+    .input {
+        text-align: center;
+        color: white;
+        background-color: white;
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    .select {
+        color: white;
+        background-color: #1a0429;
+        padding: 10px;
+    }
+}
