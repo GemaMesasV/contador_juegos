@@ -5,6 +5,7 @@
     align-items: center;
     gap: 20px;
     width: 100vw;
+    min-height: calc(100vh - 250px);
     padding: 30px 40px;
     font-size: 15px;
     -webkit-text-stroke: 1px black;
